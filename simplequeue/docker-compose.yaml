@@ -1,0 +1,12 @@
+version: '2.1'
+
+services:
+  redis:
+    image: redis:4-alpine
+  test-runner:
+    image: maven:3.5-jdk-8-alpine
+    command: "true"
+    volumes:
+      - $HOME/.m2:/root/.m2
+      - .:/src
+        

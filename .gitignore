@@ -1,0 +1,7 @@
+simplequeue/target/
+simplequeue/.settings/
+simplequeue/.classpath
+simplequeue/.project
+.metadata/
+RemoteSystemsTempFiles/
+.recommenders/
