@@ -1,0 +1,66 @@
+Workshop - Integration tests with Docker
+Some little exercises!
+30 Nov 2017
+Tags: docker, integration tests, CI
+
+Fernando Llaca
+Software Architect, BEEVA
+fernando.llaca@beeva.com
+http://codedpoetry.com/
+@nandollaca
+questions?
+
+* Before start
+Get the code!
+
+.code exercises/ex0.sh
+
+* Exercise 1
+
+Run a Redis database using Docker
+
+* Exercise 1 (Solution)
+
+Run a Redis database using Docker
+
+.code exercises/ex1.sh
+
+* Exercise 2
+
+Run the tests (also with Docker!) against that redis container
+
+* Exercise 2 (Solution)
+
+Run the tests (also with Docker!) against that redis container
+
+.code exercises/ex2.sh
+
+* Exercise 3
+
+Write a Docker compose file with docker and maven (clue: for the maven container, specify the command to run with this: command: “true”)
+
+* Exercise 3 (Solution)
+
+Write a Docker compose file with docker and maven (clue: for the maven container, specify the command to run with this: command: “true”)
+
+.code exercises/ex3.yaml
+
+* Exercise 4
+
+Rewrite the step 2 using Docker
+
+* Exercise 4 (Solution)
+
+Rewrite the step 2 using Docker
+
+.code exercises/ex4.sh
+
+* Exercise 5
+
+Write a Makefile with all the operations
+
+* Exercise 5 (Solution)
+
+Write a Makefile with all the operations
+
+.code exercises/ex5.makefile
