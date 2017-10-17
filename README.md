@@ -1,4 +1,6 @@
-Workshop - Integration tests with Docker
+# Workshop - Integration tests with Docker
+
+[![Build Status](https://travis-ci.org/fllaca/workshop-itests-docker.svg?branch=master)](https://travis-ci.org/fllaca/workshop-itests-docker)
 
 Sample code for integration tests with Docker Compose
 
