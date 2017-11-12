@@ -64,7 +64,7 @@ public class TopicResourceController {
 	
 	@RequestMapping(value = "/{name}/push", method = RequestMethod.PUT)
 	public ResponseEntity push(@PathVariable String name, @RequestBody Message message) {
-		Message newMessage = topicService.push(name, message.getName());
+		Message newMessage = topicService.push(name, message.getMessage());
 		if (newMessage != null) {
 			return ResponseEntity.ok().body(message);
 		} else {

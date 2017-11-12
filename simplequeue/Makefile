@@ -1,4 +1,5 @@
-COMMIT_HASH := $(shell git log -1 --format="%H")
+COMMIT_HASH := $(shell git log -1 --format="%h")
+USER_ID := $(shell id -u)
 
 .PHONY: setup
 setup:
@@ -10,8 +11,8 @@ clean:
 
 .PHONY: test
 test: clean setup
-	docker-compose -p $(COMMIT_HASH) run test-runner mvn -f /src verify
+	docker-compose -p $(COMMIT_HASH) run -u $(USER_ID) test-runner mvn -Duser.home=/home/user -f /src/pom.xml verify
 	
 .PHONY: run
 run: clean setup
-	docker-compose -p $(COMMIT_HASH) run -p 8080:8080 test-runner mvn -f /src spring-boot:run
+	docker-compose -p $(COMMIT_HASH) run -u $(USER_ID) -p 8080:8080 test-runner mvn -Duser.home=/home/user -f /src spring-boot:run

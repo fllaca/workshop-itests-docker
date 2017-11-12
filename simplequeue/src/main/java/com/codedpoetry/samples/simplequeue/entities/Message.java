@@ -8,8 +8,8 @@ public class Message {
 	protected Message() {
 	}
 
-	public Message(String name) {
-		this.message = name;
+	public Message(String message) {
+		this.message = message;
 	}
 
 	@Override
@@ -17,12 +17,12 @@ public class Message {
 		return message;
 	}
 
-	public String getName() {
+	public String getMessage() {
 		return message;
 	}
 
-	public void setMessage(String name) {
-		this.message = name;
+	public void setMessage(String message) {
+		this.message = message;
 	}
 
 }
