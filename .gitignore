@@ -2,6 +2,10 @@ simplequeue/target/
 simplequeue/.settings/
 simplequeue/.classpath
 simplequeue/.project
+simplequeue/target/
+simplequeue_incomplete/.settings/
+simplequeue_incomplete/.classpath
+simplequeue_incomplete/.project
 .metadata/
 RemoteSystemsTempFiles/
 .recommenders/
