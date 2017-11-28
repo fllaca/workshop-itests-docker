@@ -7,6 +7,6 @@ services:
     image: maven:3.5-jdk-8-alpine
     command: "true"
     volumes:
-      - $HOME/.m2:/root/.m2
+      - $HOME/.m2:/home/user/.m2
       - .:/src
         
