@@ -1,7 +1,14 @@
 services:
   - docker
+
+before_script:
+  - cd simplequeue && make clean
+
 script:
-  - cd simplequeue && make test
+  - make test
+
+after_script:
+  - make clean
 
 cache:
   directories:
