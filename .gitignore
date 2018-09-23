@@ -9,3 +9,4 @@ simplequeue_incomplete/.project
 .metadata/
 RemoteSystemsTempFiles/
 .recommenders/
+.sonarlint/
