@@ -9,8 +9,13 @@ setup:
 clean:
 	docker-compose -p $(COMMIT_HASH) down
 
-.PHONY: test
-test: clean setup
+.PHONY: unit-test
+unit-test: clean setup
+	# Actual tests:
+	docker-compose -p $(COMMIT_HASH) run -u $(USER_ID) test-runner mvn -Duser.home=/home/user -f /src/pom.xml test
+	
+.PHONY: integration-test
+integration-test: clean setup
 	# Avoids race conditions:
 	docker-compose -p $(COMMIT_HASH) run -u $(USER_ID) waiter dockerize -wait tcp://redis:6379 -timeout 10s
 	# Actual tests:
