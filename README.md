@@ -5,5 +5,6 @@
 
 Sample code for integration tests with Docker Compose
 
-[Exercise slides](https://go-talks.appspot.com/github.com/fllaca/workshop-itests-docker/exercises.slide)
+[Exercise slides](https://go-talks.appspot.com/github.com/fllaca/workshop-itests-docker/docs/master_class/exercises.slide)
+
 
