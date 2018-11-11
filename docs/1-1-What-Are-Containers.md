@@ -1,5 +1,15 @@
 # What are containers
 
+> * Reference: [Official Docker Docs: Overview](https://docs.docker.com/engine/docker-overview/)
+
+## Docker vs VMs
+
+![Docker Vs VMs](images/docker-vs-vm.jpg)
+
+## Docker Architecture
+
+![Docker Architecture](images/docker-architecture.svg)
+
 ## Exercises
 
 ### Preparation - Install Docker
@@ -45,6 +55,8 @@ docker inspect my-nginx-server | jq ".[0].NetworkSettings.IPAddress"
 
 
 Mount the contents of `resources/html` into the Nginx container. Take a look at the [official Nginx Docker Image documentation](https://hub.docker.com/r/library/nginx/) to find the destination folder.
+
+> **Hint:** look at the `--volume` option of the `docker run` command
 
 <details>
 <summary>Solution</summary>
