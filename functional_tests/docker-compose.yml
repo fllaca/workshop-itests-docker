@@ -1,0 +1,38 @@
+version: '3'
+
+services: 
+  backend:
+    build: backend
+    environment:
+      MYSQL_DATABASE_USER: root
+      MYSQL_DATABASE_PASSWORD: toor
+      MYSQL_DATABASE_DB: todos
+      MYSQL_DATABASE_HOST: database
+    ports:
+      - "5000:5000"
+  
+  frontend:
+    build: frontend
+    command: ng serve --disable-host-check --host 0.0.0.0 --configuration e2e
+    ports:
+    - "4200:4200"
+  
+  database:
+    image: mysql:5.6
+    environment:
+      MYSQL_ROOT_PASSWORD: toor
+    volumes:
+      - "./backend/schema.sql:/docker-entrypoint-initdb.d/schema.sql"
+
+  chrome:
+    image: selenium/standalone-chrome:3.141.5-astatine
+    ports:
+      - "4444:4444"
+    volumes:
+      - "/dev/shm:/dev/shm"
+  
+  selenium:
+    build: selenium
+    command: "true"
+    volumes:
+      - "./selenium/test.py:/code/test.py"
