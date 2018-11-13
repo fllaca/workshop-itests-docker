@@ -1,6 +1,6 @@
 # Continuous Integration
 
-## Create a Makefile
+## 3.1.1 Create a Makefile
 
 Create a Makefile that will orchestrate the `docker-compose` commands.
 * Setup
@@ -24,7 +24,7 @@ test: clean
 ```
 </details>
 
-## Race conditions
+## 3.1.2 Race conditions
 
 Let's simulate that Redis is taking too long to start. For instance, running it like this:
 

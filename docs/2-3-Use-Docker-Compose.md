@@ -1,6 +1,6 @@
 # Use Docker Compose
 
-## 1. Write the docker-compose.yaml
+## 2.3.1 Write the docker-compose.yaml
 
 Transform the Wordpress deployment in [Lesson 1](1-1-What-Are-Containers.md) to a `docker-compose.yaml`. Once you have it, start the app with:
 
@@ -55,7 +55,7 @@ services:
 </details>
 
 
-## 2. Write the test environment in a docker-compose.yaml
+## 2.3.2 Write the test environment in a docker-compose.yaml
 
 Now, create a `docker-compose.yaml` for the tests. This will be shorter that the one in the previous exercies.
 
@@ -77,7 +77,7 @@ services:
 ```
 </details>
 
-## 3. Improve the docker-compose.yaml a little
+## 2.3.3 Improve the docker-compose.yaml a little
 
 Add all the enhancements about caching local dependencies and running as non-root.
 
@@ -103,7 +103,7 @@ services:
 ```
 </details>
 
-## 4. An easy one: --abort-on-container-exit
+## 2.3.4 An easy one: --abort-on-container-exit
 
 ![relief](images/relief.gif)
 

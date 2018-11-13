@@ -1,6 +1,6 @@
 # Run integration tests in Docker
 
-## 1. First execution of the integration tests (Will fail!!)
+## 2.2.1 First execution of the integration tests (Will fail!!)
 
 Run integration tests in a container, executing now `mvn verify`.
 
@@ -31,7 +31,7 @@ docker run -it --rm \
 ```
 </details>
 
-## 2. Create a Redis container
+## 2.2.2 Create a Redis container
 
 Create a network for integration tests, and create a Redis container connected to that network.
 
@@ -47,7 +47,7 @@ docker run -d --name redis \
 ```
 </details>
 
-## 1. Run the test again, but in the same network as Redis
+## 2.2.3 Run the test again, but in the same network as Redis
 
 
 <details>

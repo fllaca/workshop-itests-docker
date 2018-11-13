@@ -20,7 +20,7 @@ When you are ready... prepare for Shell scripting!
 
 ![Hack all the things](images/jim-carrey-hacker.gif)
 
-### Run a container
+### 1.1.1 Run a container
 
 Execute a container that runs **Nginx v1.15**. Search in [Docker Hub](https://hub.docker.com/) for the official Nginx Image.
 
@@ -37,7 +37,7 @@ docker run --name my-nginx-server nginx:1.15
 </details>
 
 
-### Access to your container
+### 1.1.2 Access to your container
 
 Try to find the IP address of your container and access to its on port 80
 
@@ -51,7 +51,7 @@ docker inspect my-nginx-server | jq ".[0].NetworkSettings.IPAddress"
 ```
 </details>
 
-### Make Nginx to serve your HTML resources
+### 1.1.3 Make Nginx to serve your HTML resources
 
 
 Mount the contents of `resources/html` into the Nginx container. Take a look at the [official Nginx Docker Image documentation](https://hub.docker.com/r/library/nginx/) to find the destination folder.
@@ -67,7 +67,7 @@ docker run --name my-nginx-server -v $PWD/resources/html:/usr/share/nginx/html:r
 </details>
 
 
-### Expose Nginx ports in your laptop
+### 1.1.4 Expose Nginx ports in your laptop
 
 Now, we'll forward our `:80` port in the laptop to the same port in the container. 
 
@@ -80,7 +80,7 @@ docker run --name my-nginx-server -p 80:80 -v $PWD/resources/html:/usr/share/ngi
 </details>
 
 
-### Something more complicated... Container Networks!
+### 1.1.5 Something more complicated... Container Networks!
 
 ![No more please](images/crazy-german-kid.gif)
 

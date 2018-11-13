@@ -1,6 +1,6 @@
 # Writting Dockerfiles
 
-## 1. Write a Dockerfile based on Debian
+## 1.2.1 Write a Dockerfile based on Debian
 
 This container will run just an `echo` command
 
@@ -21,7 +21,7 @@ CMD echo "hello world!"
 ```
 </details>
 
-## 2. Use environment variables
+## 1.2.2 Use environment variables
 
 Modify the Dockerfile with an Environment Variable to specify the person to greet.
 
@@ -47,7 +47,7 @@ CMD echo "hello $WHO"
 
 
 
-## 3. Install Third Party Software
+## 1.2.3 Install Third Party Software
 
 Build and run it with:
 
@@ -72,7 +72,7 @@ CMD python -c "print \"hello $WHO\""
 </details>
 
 
-## 4. Add your code!
+## 1.2.4 Add your code!
 
 Let's write a (really) simple application in python: create a `sample-app.py` file with the following content:
 ```python

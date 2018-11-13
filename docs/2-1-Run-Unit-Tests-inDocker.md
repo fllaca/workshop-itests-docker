@@ -1,6 +1,6 @@
 # Run unit tests in Docker
 
-## 1. First execution of tests in Docker
+## 2.1.1 First execution of tests in Docker
 
 Go the `simplequeue_incomplete` project:
 
@@ -34,7 +34,7 @@ docker run -it --rm \
 ```
 </details>
 
-## 2. Cache local dependencies
+## 2.1.2 Cache local dependencies
 
 As you can see, `mvn` downloaded all the dependencies, even if we already get that locally. Let's make things faster by mounting the `/root/.m2` directory.
 
@@ -51,7 +51,7 @@ docker run -it --rm \
 ```
 </details>
 
-## 2. Run with a non-root user
+## 2.1.3 Run with a non-root user
 
 By default, the `maven` containers are run as `root`, which is a bad practice. Run the container using a **non-root** user.
 
