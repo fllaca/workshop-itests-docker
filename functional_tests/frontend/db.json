@@ -1,0 +1,12 @@
+{
+    "todos": [{
+        "content":"Do the shopping",
+        "id":1
+    },{
+        "content":"Wash the car",
+        "id":2
+    },{
+        "content":"Walk the dog",
+        "id":3
+    }]
+}

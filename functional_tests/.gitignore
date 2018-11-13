@@ -1,0 +1,6 @@
+# Python virtual environments
+env/
+selenium/env/
+
+# IDE related
+.vscode/
