@@ -35,7 +35,7 @@ export class AppComponent {
   }
   deleteItem(todo){
     for(let i=0 ;i<= this.todoArray.length ;i++){
-      if(todo.content == this.todoArray[i]){ 
+      if(todo.content == this.todoArray[i].content){ 
         this.todoArray.splice(i,1)
       }
     }
