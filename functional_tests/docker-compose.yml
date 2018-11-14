@@ -23,6 +23,13 @@ services:
       MYSQL_ROOT_PASSWORD: toor
     volumes:
       - "./backend/schema.sql:/docker-entrypoint-initdb.d/schema.sql"
+  
+  reverse-proxy:
+    image: haproxy:1.7
+    ports:
+      - "80:80"
+    volumes:
+      - "./reverse-proxy/haproxy.cfg:/usr/local/etc/haproxy/haproxy.cfg"
 
   chrome:
     image: selenium/standalone-chrome:3.141.5-astatine
