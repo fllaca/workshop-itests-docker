@@ -21,12 +21,10 @@ Tests run: 3, Failures: 0, Errors: 3, Skipped: 0
 <summary>Solution</summary>
 
 ```shell
-mkdir -p /tmp/dockerm2
 docker run -it --rm \
   --volume $(pwd):/code \
   --volume /tmp/dockerm2:/tmp/.m2/repository \
   --workdir /code \
-  --user $(id -u) \
   maven:3.5-jdk-8-alpine mvn -Dmaven.repo.local=/tmp/.m2/repository verify
 ```
 </details>
@@ -59,7 +57,6 @@ docker run -it --rm \
   --volume $(pwd):/code \
   --volume /tmp/dockerm2:/tmp/.m2/repository \
   --workdir /code \
-  --user $(id -u) \
   --network simplequeue-integration-tests \
   maven:3.5-jdk-8-alpine mvn -Dmaven.repo.local=/tmp/.m2/repository verify
 ```
