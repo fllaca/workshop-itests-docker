@@ -79,9 +79,7 @@ services:
 
 ## 2.3.3 Improve the docker-compose.yaml a little
 
-Add all the enhancements about caching local dependencies and running as non-root.
-
-> **Hint:** run the docker-compose with: `UID=$(id -u) docker-compose up` 
+Add all the enhancements about caching local dependencies.
 
 <details>
 <summary>Solution</summary>
@@ -94,7 +92,6 @@ services:
     image: redis:4-alpine
   test-runner:
     image: maven:3.5-jdk-8-alpine
-    user: ${UID}
     command: mvn -Dmaven.repo.local=/tmp/.m2/repository verify
     working_dir: /code
     volumes:
@@ -110,5 +107,5 @@ services:
 Just run `docker-compose` with `--abort-on-container-exit` ;D 
 
 ```
-UID=$(id -u) docker-compose up --abort-on-container-exit
+docker-compose up --abort-on-container-exit
 ```

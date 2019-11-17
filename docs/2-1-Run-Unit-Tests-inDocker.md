@@ -51,7 +51,7 @@ docker run -it --rm \
 ```
 </details>
 
-## 2.1.3 Run with a non-root user
+## 2.1.3 Bonus: Run with a non-root user
 
 By default, the `maven` containers are run as `root`, which is a bad practice. Run the container using a **non-root** user.
 

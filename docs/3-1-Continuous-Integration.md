@@ -11,7 +11,6 @@ Create a Makefile that will orchestrate the `docker-compose` commands.
 <summary>Solution</summary>
 
 ```makefile
-UID:=$(shell id -u)
 
 .PHONY: clean
 clean:
@@ -53,7 +52,6 @@ services:
     command: "true"
   test-runner:
     image: maven:3.5-jdk-8-alpine
-    user: ${UID}
     command: "true"
     working_dir: /code
     volumes:
@@ -62,8 +60,6 @@ services:
 ```
 
 ```makefile
-UID:=$(shell id -u)
-export UID
 
 .PHONY: clean
 clean:
@@ -72,7 +68,7 @@ clean:
 setup:
 	docker-compose up -d
 
-wait: 
+wait:
 	docker-compose run waiter dockerize -wait tcp://redis:6379 -timeout 30s
 
 verify:
