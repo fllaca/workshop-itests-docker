@@ -8,7 +8,7 @@ Build and run it with:
 
 ```shell
 docker build -t helloworld .
-docker run helloworld
+docker run --rm helloworld
 ```
 
 <details>
@@ -30,7 +30,7 @@ Build and run it with:
 ```shell
 docker build -t helloworld .
 docker run --rm helloworld
-docker run --rm WHO=Fer helloworld
+docker run --rm -e WHO=Fer helloworld
 ```
 
 <details>
