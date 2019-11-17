@@ -86,10 +86,47 @@ docker run --name my-nginx-server -p 80:80 -v $PWD/resources/html:/usr/share/ngi
 
 Let's run a couple or three containers, and connect them in a network. Let's install Wordpress connected to a MySql database, both running in Docker containers.
 
+First step will be creating a Docker network:
+
+```
+docker network create wordpress
+```
+
+Then, we create a container using the official [MySql Docker image](https://hub.docker.com/_/mysql). To attach the container to the network previously create we use the `--network` option in the `docker run` command.
+
+> **Hint:** you can customize the MySql config using environments variables, by adding this to the docker run command: `-e MYSQL_ROOT_PASSWORD=somewordpress -e MYSQL_DATABASE=wordpress -e MYSQL_USER=wordpress -e MYSQL_PASSWORD=wordpress`
 
 <details>
-<summary>Solution</summary>
+<summary>Solution: MySql container</summary>
 
+```
+docker run -d --name wp-database \
+  -e MYSQL_ROOT_PASSWORD=somewordpress \
+  -e MYSQL_DATABASE=wordpress \
+  -e MYSQL_USER=wordpress \
+  -e MYSQL_PASSWORD=wordpress \
+  --network wordpress \
+  mysql:5.7
+```
+</details>
+
+Then we are ready to create the container with [Wordpress](https://hub.docker.com/_/wordpress) As we did with MySql, you can set some configuration with environment variables: `-e WORDPRESS_DB_HOST=wp-database:3306 -e WORDPRESS_DB_USER=wordpress -e WORDPRESS_DB_PASSWORD=wordpress`.
+
+<details>
+<summary>Solution: Wordpress container</summary>
+```
+docker run -d --name wp-wordpress \
+  -e WORDPRESS_DB_HOST=wp-database:3306 \
+  -e WORDPRESS_DB_USER=wordpress \
+  -e WORDPRESS_DB_PASSWORD=wordpress \
+  -p 8000:80 \
+  --network wordpress \
+  wordpress:latest
+```
+</details>
+
+<details>
+<summary>Solution: all together</summary>
 ```
 docker network create wordpress
 docker run -d --name wp-database \
