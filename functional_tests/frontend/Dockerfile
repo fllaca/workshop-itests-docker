@@ -1,5 +1,5 @@
 # Installs the current application on a Node Image.
-FROM node:10.5
+FROM node:10.9
 # Install angular
 RUN npm install -g @angular/cli
 # Sets the path where the app is going to be installed

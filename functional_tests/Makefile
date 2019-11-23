@@ -8,4 +8,4 @@ setup:
 
 .PHONY: selenium-test
 selenium-test:
-	docker-compose run selenium sh -c "/usr/local/bin/python /code/test.py"
+	docker-compose run selenium sh -c "nosetests --nologcapture -v /code/test.py"

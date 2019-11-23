@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { HttpClient }    from '@angular/common/http';
+import {Observable} from 'rxjs';
 
 interface TodoModel {
   content: string;
@@ -15,14 +16,12 @@ interface TodoModel {
 export class AppComponent {
   title = 'frontend';
   todoArray:TodoModel[]=[]
-  
+
   constructor(private http: HttpClient){
   }
 
   ngOnInit(): void {
-    this.http.get<TodoModel[]>(environment.backend + "/todos").subscribe(data => {
-      this.todoArray = data
-    });
+    this.updateTodos()
   }
 
   addTodo(value:string){
@@ -32,13 +31,15 @@ export class AppComponent {
     }
     this.todoArray.push(newTodo)
     console.log(this.todoArray)
+    this.saveTodo(newTodo).subscribe(data => {
+      this.updateTodos()
+    })
   }
+
   deleteItem(todo){
-    for(let i=0 ;i<= this.todoArray.length ;i++){
-      if(todo.content == this.todoArray[i]){ 
-        this.todoArray.splice(i,1)
-      }
-    }
+    this.deleteTodo(todo).subscribe(data => {
+      this.updateTodos()
+    })
   }
 
   todoSubmit(value:any){
@@ -48,5 +49,19 @@ export class AppComponent {
     }else{
       alert('Field required **')
     }
+  }
+
+  saveTodo(todo:TodoModel) : Observable<TodoModel> {
+    return this.http.post<TodoModel>(environment.backend + "/todos", todo)
+  }
+
+  deleteTodo(todo:TodoModel) : Observable<TodoModel> {
+    return this.http.delete<TodoModel>(environment.backend + "/todos/" + todo.id)
+  }
+
+  updateTodos() {
+    this.http.get<TodoModel[]>(environment.backend + "/todos").subscribe(data => {
+      this.todoArray = data
+    });
   }
 }
