@@ -1,6 +1,6 @@
 version: '3'
 
-services: 
+services:
   backend:
     build: backend
     environment:
@@ -10,13 +10,13 @@ services:
       MYSQL_DATABASE_HOST: database
     ports:
       - "5000:5000"
-  
+
   frontend:
     build: frontend
     command: ng serve --disable-host-check --host 0.0.0.0 --configuration e2e
     ports:
     - "4200:4200"
-  
+
   database:
     image: mysql:5.6
     environment:
@@ -25,7 +25,7 @@ services:
     - "3306:3306"
     volumes:
       - "./backend/schema.sql:/docker-entrypoint-initdb.d/schema.sql"
-  
+
   reverse-proxy:
     image: haproxy:1.7
     ports:
@@ -39,7 +39,7 @@ services:
       - "4444:4444"
     volumes:
       - "/dev/shm:/dev/shm"
-  
+
   selenium:
     build: selenium
     command: "true"
