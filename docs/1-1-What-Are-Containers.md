@@ -114,6 +114,7 @@ Then we are ready to create the container with [Wordpress](https://hub.docker.co
 
 <details>
 <summary>Solution: Wordpress container</summary>
+
 ```
 docker run -d --name wp-wordpress \
   -e WORDPRESS_DB_HOST=wp-database:3306 \
@@ -123,10 +124,12 @@ docker run -d --name wp-wordpress \
   --network wordpress \
   wordpress:latest
 ```
+
 </details>
 
 <details>
 <summary>Solution: all together</summary>
+
 ```
 docker network create wordpress
 docker run -d --name wp-database \
@@ -145,4 +148,5 @@ docker run -d --name wp-wordpress \
   --network wordpress \
   wordpress:latest
 ```
+
 </details>
