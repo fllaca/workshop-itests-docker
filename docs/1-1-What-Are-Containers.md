@@ -37,7 +37,7 @@ docker run --name my-nginx-server nginx:1.15
 </details>
 
 
-### 1.1.2 Access to your container
+### 1.1.2 Access to your container IP
 
 Try to find the IP address of your container and access to its on port 80
 
@@ -51,25 +51,25 @@ docker inspect my-nginx-server | jq ".[0].NetworkSettings.IPAddress"
 ```
 </details>
 
-### 1.1.3 Make Nginx to serve your HTML resources
+### 1.1.3 Expose Nginx ports in your laptop
 
-
-Mount the contents of `resources/html` into the Nginx container. Take a look at the [official Nginx Docker Image documentation](https://hub.docker.com/r/library/nginx/) to find the destination folder.
-
-> **Hint:** look at the `--volume` option of the `docker run` command
+Now, we'll forward our `:80` port in the laptop to the same port in the container. 
 
 <details>
 <summary>Solution</summary>
 
 ```
-docker run --name my-nginx-server -v $PWD/resources/html:/usr/share/nginx/html:ro nginx:1.15
+docker run --name my-nginx-server -p 80:80 nginx:1.15
 ```
 </details>
 
 
-### 1.1.4 Expose Nginx ports in your laptop
+### 1.1.4 Make Nginx to serve your HTML resources
 
-Now, we'll forward our `:80` port in the laptop to the same port in the container. 
+
+Mount the contents of `resources/html` into the Nginx container. Take a look at the [official Nginx Docker Image documentation](https://hub.docker.com/r/library/nginx/) to find the destination folder.
+
+> **Hint:** look at the `--volume` option of the `docker run` command
 
 <details>
 <summary>Solution</summary>
