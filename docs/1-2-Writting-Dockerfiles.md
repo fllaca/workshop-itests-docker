@@ -51,6 +51,12 @@ CMD echo "hello $WHO"
 
 ## 1.2.3 Install Third Party Software
 
+Let's add some custom packages and installation steps to our image: include the execution of this command as part of the Dockerfile:
+
+```
+apt-get update && apt-get install -y python-pip && pip install coloredlogs
+```
+
 Build and run it with:
 
 ```shell
