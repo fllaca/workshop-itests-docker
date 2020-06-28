@@ -109,3 +109,26 @@ Just run `docker-compose` with `--abort-on-container-exit` ;D
 ```
 docker-compose up --abort-on-container-exit
 ```
+
+## 2.3.5 Testing against multiple versions
+
+You can override values of `docker-compose.yaml` by adding extra docker-compose files with the `-f` option:
+
+```
+docker-compose -f docker-compose.yaml -f docker-compose.redis6.yaml up --abort-on-container-exit
+```
+
+<details>
+<summary>Solution</summary>
+
+```yaml
+# docker-compose.redis6.yaml
+# only specifies the redis version to use
+version: '2.1'
+
+services:
+  redis:
+    image: redis:6-alpine
+```
+
+</details>
