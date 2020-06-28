@@ -42,10 +42,9 @@ As you can see, `mvn` downloaded all the dependencies, even if we already get th
 <summary>Solution</summary>
 
 ```shell
-mkdir -p /tmp/dockerm2
 docker run -it --rm \
   --volume $(pwd):/code \
-  --volume /tmp/dockerm2:/root/.m2 \
+  --volume $HOME/.m2:/root/.m2 \
   --workdir /code \
     maven:3.5-jdk-8-alpine mvn test
 ```
