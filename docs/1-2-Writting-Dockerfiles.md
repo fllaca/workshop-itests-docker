@@ -1,5 +1,7 @@
 # Writting Dockerfiles
 
+The [Dockerfile reference](https://docs.docker.com/engine/reference/builder/) docs can be useful for the following exercises
+
 ## 1.2.1 Write a Dockerfile based on Debian
 
 This container will run just an `echo` command

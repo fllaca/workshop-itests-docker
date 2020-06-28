@@ -20,6 +20,10 @@ When you are ready... prepare for Shell scripting!
 
 ![Hack all the things](images/jim-carrey-hacker.gif)
 
+#### Useful references:
+
+ * [`docker run` cli usage](https://docs.docker.com/engine/reference/commandline/run/)
+
 ### 1.1.1 Run a container
 
 Execute a container that runs **Nginx v1.15**. Search in [Docker Hub](https://hub.docker.com/) for the official Nginx Image.
