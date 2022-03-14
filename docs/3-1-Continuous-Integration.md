@@ -17,7 +17,7 @@ clean:
 	docker-compose down
 
 .PHONY: test
-test: clean 
+test: clean
 	docker-compose up --abort-on-container-exit
 
 ```
@@ -48,7 +48,7 @@ services:
     image: redis:4-alpine
     command: sh -c "sleep 30 && redis-server"
   waiter:
-    image: jwilder/dockerize 
+    image: jwilder/dockerize
     command: "true"
   test-runner:
     image: maven:3.5-jdk-8-alpine
@@ -56,7 +56,7 @@ services:
     working_dir: /code
     volumes:
       - .:/code
-      - /tmp/dockerm2:/tmp/.m2/repository
+      - ./.m2:/root/.m2
 ```
 
 ```makefile
@@ -72,7 +72,7 @@ wait:
 	docker-compose run waiter dockerize -wait tcp://redis:6379 -timeout 30s
 
 verify:
-	docker-compose run test-runner mvn -Dmaven.repo.local=/tmp/.m2/repository verify
+	docker-compose run test-runner mvn verify
 
 .PHONY: test
 test: clean setup wait verify

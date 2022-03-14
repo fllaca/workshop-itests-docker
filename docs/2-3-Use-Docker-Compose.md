@@ -9,6 +9,7 @@ docker-compose up -d
 ```
 
 **Docker commands:**
+bash:
 ```shell
 docker network create wordpress
 docker run -d --name wp-database \
@@ -25,6 +26,26 @@ docker run -d --name wp-wordpress \
   -e WORDPRESS_DB_PASSWORD=wordpress \
   -p 8000:80 \
   --network wordpress \
+  wordpress:latest
+```
+
+powershell:
+```powershell
+docker network create wordpress
+docker run -d --name wp-database `
+  -e MYSQL_ROOT_PASSWORD=somewordpress `
+  -e MYSQL_DATABASE=wordpress `
+  -e MYSQL_USER=wordpress `
+  -e MYSQL_PASSWORD=wordpress `
+  --network wordpress `
+  mysql:5.7
+
+docker run -d --name wp-wordpress `
+  -e WORDPRESS_DB_HOST=wp-database:3306 `
+  -e WORDPRESS_DB_USER=wordpress `
+  -e WORDPRESS_DB_PASSWORD=wordpress `
+  -p 8000:80 `
+  --network wordpress `
   wordpress:latest
 ```
 
@@ -49,7 +70,7 @@ services:
       WORDPRESS_DB_HOST: wp-database:3306
       WORDPRESS_DB_USER: wordpress
       WORDPRESS_DB_PASSWORD: wordpress
-    ports: 
+    ports:
     - 8000:80
 ```
 </details>
@@ -92,11 +113,11 @@ services:
     image: redis:4-alpine
   test-runner:
     image: maven:3.5-jdk-8-alpine
-    command: mvn -Dmaven.repo.local=/tmp/.m2/repository verify
+    command: mvn verify
     working_dir: /code
     volumes:
       - .:/code
-      - /tmp/dockerm2:/tmp/.m2/repository
+      - ./.m2:/root/.m2
 ```
 </details>
 
@@ -104,7 +125,7 @@ services:
 
 ![relief](images/relief.gif)
 
-Just run `docker-compose` with `--abort-on-container-exit` ;D 
+Just run `docker-compose` with `--abort-on-container-exit` ;D
 
 ```
 docker-compose up --abort-on-container-exit

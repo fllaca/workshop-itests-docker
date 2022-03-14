@@ -10,3 +10,5 @@ simplequeue_incomplete/.project
 RemoteSystemsTempFiles/
 .recommenders/
 .sonarlint/
+
+.m2
