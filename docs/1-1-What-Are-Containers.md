@@ -51,13 +51,17 @@ Try to find the IP address of your container and access to its on port 80
 <summary>Solution</summary>
 
 ```
-docker inspect my-nginx-server | jq ".[0].NetworkSettings.IPAddress"
+# get all info:
+docker inspect my-nginx-server
+
+# get only the ip:
+docker inspect --format '{{ .NetworkSettings.Networks.bridge.IPAddress }}' my-nginx-server
 ```
 </details>
 
 ### 1.1.3 Expose Nginx ports in your laptop
 
-Now, we'll forward our `:80` port in the laptop to the same port in the container. 
+Now, we'll forward our `:80` port in the laptop to the same port in the container.
 
 <details>
 <summary>Solution</summary>
@@ -103,6 +107,7 @@ Then, we create a container using the official [MySql Docker image](https://hub.
 <details>
 <summary>Solution: MySql container</summary>
 
+bash:
 ```
 docker run -d --name wp-database \
   -e MYSQL_ROOT_PASSWORD=somewordpress \
@@ -112,6 +117,17 @@ docker run -d --name wp-database \
   --network wordpress \
   mysql:5.7
 ```
+
+powershell:
+```
+docker run -d --name wp-database `
+  -e MYSQL_ROOT_PASSWORD=somewordpress `
+  -e MYSQL_DATABASE=wordpress `
+  -e MYSQL_USER=wordpress `
+  -e MYSQL_PASSWORD=wordpress `
+  --network wordpress `
+  mysql:5.7
+```
 </details>
 
 Then we are ready to create the container with [Wordpress](https://hub.docker.com/_/wordpress) As we did with MySql, you can set some configuration with environment variables: `-e WORDPRESS_DB_HOST=wp-database:3306 -e WORDPRESS_DB_USER=wordpress -e WORDPRESS_DB_PASSWORD=wordpress`.
@@ -119,6 +135,7 @@ Then we are ready to create the container with [Wordpress](https://hub.docker.co
 <details>
 <summary>Solution: Wordpress container</summary>
 
+bash:
 ```
 docker run -d --name wp-wordpress \
   -e WORDPRESS_DB_HOST=wp-database:3306 \
@@ -129,11 +146,23 @@ docker run -d --name wp-wordpress \
   wordpress:latest
 ```
 
+powershell:
+```
+docker run -d --name wp-wordpress `
+  -e WORDPRESS_DB_HOST=wp-database:3306 `
+  -e WORDPRESS_DB_USER=wordpress `
+  -e WORDPRESS_DB_PASSWORD=wordpress `
+  -p 8000:80 `
+  --network wordpress `
+  wordpress:latest
+```
+
 </details>
 
 <details>
 <summary>Solution: all together</summary>
 
+bash:
 ```
 docker network create wordpress
 docker run -d --name wp-database \
@@ -150,6 +179,26 @@ docker run -d --name wp-wordpress \
   -e WORDPRESS_DB_PASSWORD=wordpress \
   -p 8000:80 \
   --network wordpress \
+  wordpress:latest
+```
+
+powershell:
+```
+docker network create wordpress
+docker run -d --name wp-database `
+  -e MYSQL_ROOT_PASSWORD=somewordpress `
+  -e MYSQL_DATABASE=wordpress `
+  -e MYSQL_USER=wordpress `
+  -e MYSQL_PASSWORD=wordpress `
+  --network wordpress `
+  mysql:5.7
+
+docker run -d --name wp-wordpress `
+  -e WORDPRESS_DB_HOST=wp-database:3306 `
+  -e WORDPRESS_DB_USER=wordpress `
+  -e WORDPRESS_DB_PASSWORD=wordpress `
+  -p 8000:80 `
+  --network wordpress `
   wordpress:latest
 ```
 
