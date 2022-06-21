@@ -77,6 +77,30 @@ verify:
 .PHONY: test
 test: clean setup wait verify
 ```
+
+```powershell
+$cmd=$args[0]
+
+function clean {
+	docker-compose down -v
+}
+
+function setup {
+	docker-compose up -d
+}
+
+function verify {
+	docker-compose run test-runner mvn verify
+}
+
+function wait {
+	docker-compose run waiter dockerize -wait tcp://redis:6379 -timeout 30s
+}
+
+
+& $cmd
+
+```
 </details>
 
 
