@@ -10,6 +10,7 @@ Create a Makefile that will orchestrate the `docker-compose` commands.
 <details>
 <summary>Solution</summary>
 
+Makefile:
 ```makefile
 
 .PHONY: clean
@@ -19,6 +20,24 @@ clean:
 .PHONY: test
 test: clean
 	docker-compose up --abort-on-container-exit
+
+```
+
+powershell:
+```powershell
+$cmd=$args[0]
+
+function clean {
+	docker-compose down -v
+}
+
+function test {
+	clean
+	docker-compose up --abort-on-container-exit
+}
+
+
+& $cmd
 
 ```
 </details>
@@ -37,9 +56,12 @@ Change `docker-compose.yaml` to run Redis with that `sleep` command and see what
 
 We'll make use of [jwilder/dockerize](https://github.com/jwilder/dockerize) to implement an active wait for the Redis service, so we don't break the tests. Add a new `dockerize` container to `docker-compose.yaml` and modify the Makefile to perform an extra "wait" step.
 
+> **Hint:** one way of accomplishing this can be using the `docker-compose run` subcommand
+
 <details>
 <summary>Solution</summary>
 
+docker-compose.yml:
 ```yaml
 version: '2.1'
 
@@ -59,6 +81,7 @@ services:
       - ./.m2:/root/.m2
 ```
 
+Makefile:
 ```makefile
 
 .PHONY: clean
@@ -78,6 +101,7 @@ verify:
 test: clean setup wait verify
 ```
 
+powershell:
 ```powershell
 $cmd=$args[0]
 
