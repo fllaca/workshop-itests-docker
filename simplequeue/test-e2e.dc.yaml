@@ -1,0 +1,29 @@
+services:
+  redis:
+    image: redis:4-alpine
+
+  test:
+    build: ./behave
+    command:
+      - behave
+    environment:
+      - BASE_URL=http://backend:8080
+    volumes:
+      - ./behave/features:/workspace/features
+
+  wait-for-api:
+    image: alpine/curl
+    command:
+      - curl
+      - --retry-all-errors
+      - --retry
+      - "10"
+      - http://backend:8080/topics
+
+  backend:
+    build: .
+    ports:
+      - "8080:8080"
+    environment:
+      - SPRING_REDIS_HOST=redis
+

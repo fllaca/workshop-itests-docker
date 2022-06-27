@@ -1,2 +1,6 @@
 target
 .m2
+Makefile
+behave
+docker-compose.yaml
+test-e2e.dc.yaml

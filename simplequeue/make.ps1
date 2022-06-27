@@ -23,6 +23,14 @@ function integration-test {
 	docker-compose -p $commit_hash run test-runner mvn -f /src/pom.xml verify
 }
 
+function e2e-test {
+	clean
+	setup
+	docker-compose -p $commit_hash -f test-e2e.dc.yaml up -d redis backend
+	docker-compose -p $commit_hash -f test-e2e.dc.yaml run wait-for-api
+	docker-compose -p $commit_hash -f test-e2e.dc.yaml run test
+}
+
 
 & $cmd
 
