@@ -100,7 +100,7 @@ First step will be creating a Docker network:
 docker network create wordpress
 ```
 
-Then, we create a container using the official [MySql Docker image](https://hub.docker.com/_/mysql). To attach the container to the network previously create we use the `--network` option in the `docker run` command.
+Then, we create a container using the official [MySql Docker image](https://hub.docker.com/_/mysql). To attach the container to the network previously create we use the `--network` option in the `docker run` command. **IMPORTANT: container name will be used later in Wordpress database connection, so let's give it a name with `--name wp-database`.
 
 > **Hint:** you can customize the MySql config using environments variables, by adding this to the docker run command: `-e MYSQL_ROOT_PASSWORD=somewordpress -e MYSQL_DATABASE=wordpress -e MYSQL_USER=wordpress -e MYSQL_PASSWORD=wordpress`
 
