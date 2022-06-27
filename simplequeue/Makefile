@@ -31,3 +31,7 @@ e2e-test:
 	docker-compose -p $(COMMIT_HASH) -f test-e2e.dc.yaml run wait-for-api
 	docker-compose -p $(COMMIT_HASH) -f test-e2e.dc.yaml run test
 
+.PHONY: e2e-clean
+e2e-clean:
+	docker-compose -p $(COMMIT_HASH) -f test-e2e.dc.yaml down
+

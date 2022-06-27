@@ -24,11 +24,13 @@ function integration-test {
 }
 
 function e2e-test {
-	clean
-	setup
 	docker-compose -p $commit_hash -f test-e2e.dc.yaml up -d redis backend
 	docker-compose -p $commit_hash -f test-e2e.dc.yaml run wait-for-api
 	docker-compose -p $commit_hash -f test-e2e.dc.yaml run test
+}
+
+function e2e-clean {
+	docker-compose -p $commit_hash -f test-e2e.dc.yaml down -v
 }
 
 
