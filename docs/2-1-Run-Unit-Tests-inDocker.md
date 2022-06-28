@@ -22,6 +22,8 @@ Unit tests can be run with the command `mvn test`. But... you'll need Maven... L
 > **Hint 1:** Okay... I'll tell you the Docker image you need: `maven:maven:3.5-jdk-8-alpine`.
 >
 > **Hint 2:** in shell commands, `$PWD` is an "alias" of the current directory.
+>
+> **Hint 3:** check the `--workdir` option, that tells Docker what is the folder to start running the process inside the container.
 
 <details>
 <summary>Solution</summary>
