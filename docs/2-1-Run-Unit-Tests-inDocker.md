@@ -19,7 +19,7 @@ There's a maven project there:
 
 Unit tests can be run with the command `mvn test`. But... you'll need Maven... Let's run the unit tests inside a container usind `docker run`!
 
-> **Hint 1:** Okay... I'll tell you the Docker image you need: `maven:maven:3.5-jdk-8-alpine`.
+> **Hint 1:** Okay... I'll tell you the Docker image you need: `maven:3.5-jdk-8-alpine`.
 >
 > **Hint 2:** in shell commands, `$PWD` is an "alias" of the current directory.
 >
