@@ -1,0 +1,18 @@
+---
+services:
+  redis:
+    image: redis
+    command: sh -c "sleep 30 && redis-server"
+
+  maven:
+    image: maven:3.5-jdk-8-alpine
+    working_dir: /usr/src/mymaven
+    volumes:
+      - .:/usr/src/mymaven
+      - ./.m2:/root/.m2
+    command: mvn verify
+
+  wait:
+    image: jwilder/dockerize
+    command: dockerize -wait tcp://redis:6379 -timeout 45s
+
